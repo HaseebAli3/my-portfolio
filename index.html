@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M Haseeb Ali - Full Stack Developer</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2103/2103633.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" class="stylesheet">
+    <!-- Inline CSS for button responsiveness in home section -->
+    <style>
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        @media (max-width: 480px) {
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn-group .btn {
+                width: 100%;
+                max-width: 200px;
+                text-align: center;
+            }
+        }
+        /* Make project divs look clickable */
+        .project {
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .project:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head> 
+
+<body>
+    <!-------------------------- Header Area -------------------------->
+    <header class="header-area">
+        <div class="container">
+            <div class="header">
+                <a href="" class="logo">
+                    <i class="fa fa-code"></i>
+                </a>
+                <ul class="navbar">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="menu_icon">
+                    <i class="fa fa-bars"></i>
+                </div>
+            </div>
+        </div> 
+    </header>
+ 
+    <!-------------------------- Home Page -------------------------->
+    <div class="FirstElement" id="home">
+        <div class="profile-photo">
+            <img src="https://img.freepik.com/premium-vector/vector-man-with-laptop-minimalism-white-background-generative-ai_384720-9617.jpg?ga=GA1.1.2114219623.1747738040&semt=ais_hybrid&w=740" alt="profile picture">
+        </div>
+        <div class="profile-text">
+            <h5>Hi I'm </h5><br>
+            <h1>M Haseeb Ali</h1><br>
+            <p>Welcome to my portfolio website! I'm a passionate Full Stack Developer specializing in Django, HTML, CSS, and JavaScript. Currently enhancing my skills as a trainee at Torch Solutions software house, I'm eager to contribute to innovative web solutions and grow in this dynamic field.</p>
+            <div class="btn-group">
+                <a href="files/HaseebResume.pdf" class="btn">Download CV</a>
+                <a href="#contact" class="btn active">Hire Me</a>
+                <a href="mailto:haseeb.codes.25@gmail.com" class="btn">Contact</a>
+            </div>
+            <div class="social">
+                <a href="mailto:haseeb.codes.25@gmail.com"><i class="fa fa-envelope"></i></a>
+                <a href="https://github.com/HaseebAli3"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/mhaseebali-pythonlover/"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-------------------------- About Section -------------------------->
+    <section class="about-area" id="about">
+        <div class="container">
+            <div class="about">
+                <div class="about-content">
+                    <h4>About Me</h4>
+                    <ul>
+                        <li>I am a fresh graduate with a Bachelor's degree in Computer Science, equipped with full-stack development skills in Django, HTML, CSS, and JavaScript. My journey in technology is driven by a passion for creating efficient and user-friendly web applications.</li>
+                        <li>Currently, I'm gaining practical experience as a trainee at Torch Solutions software house, where I'm applying my academic knowledge to real-world projects and continuously expanding my technical expertise.</li>
+                        <li>I believe in the power of clean code, intuitive design, and continuous learning. My goal is to develop solutions that not only meet technical requirements but also deliver exceptional user experiences.</li>
+                    </ul>
+                </div>
+                <div class="about-skills">
+                    <ul>
+                        <li>Name: M Haseeb Ali</li>
+                        <li>Age: 23</li>     
+                        <li>From: Pakistan</li>
+                        <li>Email: haseeb.codes.25@gmail.com</li>
+                        <li>Availability: Fulltime</li>
+                        <li>Experience: Trainee</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-------------- Education & Internship -------------->
+    <section class="education-content" id="education">
+        <div class="container">
+            <div class="row">
+                <div class="education">
+                    <h3 class="title">Education</h3>
+                    <div class="row">
+                        <div class="timeline-box">
+                            <div class="timeline">
+                                <!-- Timeline-item -->
+                                <div class="timeline-item">
+                                    <div class="circle-dot"></div>
+                                    <h3 class="timeline-title">BSCS - 3.4 CGPA</h3>
+                                    <h4 class="timeline-title">Government Graduate College Khanpur</h4>
+                                    <h4 class="timeline-title">(Affiliated with Khawaja Fareed University)</h4>
+                                    <h4 class="timeline-title">
+                                        <i class="fa fa-calendar"></i> 2021-2025
+                                    </h4>
+                                </div> 
+                                <!-- Timeline-item -->
+                                <div class="timeline-item">
+                                    <div class="circle-dot"></div>
+                                    <h3 class="timeline-title">ICS - 67%</h3>
+                                    <h4 class="timeline-title">Government Higher Secondary School Firoza</h4>
+                                    <h4 class="timeline-title">
+                                        <i class="fa fa-calendar"></i> 2019-2021
+                                    </h4>
+                                </div>
+                                <!-- Timeline-item -->
+                                <div class="timeline-item">
+                                    <div class="circle-dot"></div>
+                                    <h3 class="timeline-title">Matric - 78%</h3>
+                                    <h4 class="timeline-title">Government Higher Secondary School Firoza</h4>
+                                    <h4 class="timeline-title">
+                                        <i class="fa fa-calendar"></i> 2017-2019
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="internship">
+                    <h3 class="title">Experience</h3>
+                    <div class="row">
+                        <div class="timeline-box">
+                            <div class="timeline">
+                                <!-- Timeline-item -->
+                                <div class="timeline-item">
+                                    <div class="circle-dot"></div>
+                                    <h3 class="timeline-title">Full Stack Developer Trainee</h3>
+                                    <h4 class="timeline-title">Torch Solutions</h4>
+                                    <h4 class="timeline-title">
+                                        <i class="fa fa-calendar"></i> CURRENT
+                                    </h4>
+                                    <li class="timeline-text">Gaining hands-on experience in full-stack development with Django framework. Working on real-world projects to enhance skills in backend development, frontend design, and database management.</li>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-------------------------- Projects -------------------------->
+    <section class="project-content" id="projects">
+        <div class="container">
+            <div class="project-title">
+                <h4>My Projects</h4>
+                <p>Discover my projects, where creativity meets innovation</p>
+            </div>
+            <div class="projects">
+                <!-- 1st Project -->
+                <a href="https://github.com/HaseebAli3/Fake-News-Detection-System" target="_blank" class="project">
+                    <div>
+                        <i class="fa fa-newspaper"></i>
+                        <h4>Fake News Detection System</h4>
+                        <p>Developed a machine learning-based system to identify fake news articles using natural language processing techniques and classification algorithms.</p>
+                    </div>
+                </a>
+                <!-- 2nd Project -->
+                <a href="https://github.com/HaseebAli3/Online-voting-system" target="_blank" class="project">
+                    <div>
+                        <i class="fa fa-vote-yea"></i>
+                        <h4>Online Voting System</h4>
+                        <p>A secure web-based voting platform built with Django that ensures transparent and tamper-proof elections with user authentication and result tabulation.</p>
+                    </div>
+                </a>
+                <!-- 3rd Project -->
+                <a href="https://github.com/HaseebAli3/Selling-Property" target="_blank" class="project">
+                    <div>
+                        <i class="fa fa-home"></i>
+                        <h4>Online Property Sale</h4>
+                        <p>An e-commerce platform for property transactions featuring property listings, search filters, and secure payment integration.</p>
+                    </div>
+                </a>
+                <!-- 4th Project -->
+                <a href="https://github.com/HaseebAli3/Student-MS-with-Next.js-Firebase" target="_blank" class="project">
+                    <div>
+                        <i class="fa fa-users"></i>
+                        <h4>Student Management System</h4>
+                        <p>A comprehensive school management solution with features for student registration, attendance tracking, grade management, and report generation.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-------------------------- Contact Me -------------------------->
+    <section class="contact-content" id="contact">
+        <div class="container">
+            <div class="contact-title">
+                <h4>Contact Me</h4>
+                <p>Get In Touch</p>
+            </div>
+            <div class="contact">
+                <form id="contactForm">
+                    <input type="text" id="name" placeholder="Name" required>
+                    <input type="email" id="email" placeholder="Email" required>
+                    <input type="text" id="subject" placeholder="Subject">
+                    <textarea id="message" placeholder="Message"></textarea>
+                    <button type="submit" class="submit">Send Message</button>
+                </form>
+                <span id="msg"></span>
+            </div>
+        </div>
+    </section>
+        
+    <!-------------------------- JS -------------------------->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script>
+        // Contact form submission
+        $('#contactForm').submit(function(e) {
+            e.preventDefault();
+            
+            const name = $('#name').val().trim();
+            const email = $('#email').val().trim();
+            const subject = $('#subject').val().trim();
+            const message = $('#message').val().trim();
+
+            if (!name || !email) {
+                $('#msg').text('Please fill in all required fields.');
+                $('#msg').css('color', 'red');
+                return;
+            }
+
+            const mailtoLink = `mailto:haseeb.codes.25@gmail.com?subject=${encodeURIComponent(subject || 'Contact from Portfolio')}&body=${encodeURIComponent(
+                `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+            )}`;
+            
+            window.location.href = mailtoLink;
+            $('#contactForm')[0].reset();
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="script.js"></script>
+    
+    <!-------------------------- Footer section -------------------------->
+    <footer class="footer">
+        <small class="message">Thanks for visiting and happy coding!</small>
+        <small class="copyright">© Copyright 2025. All rights reserved.</small>
+    </footer>
+</body>
+</html>
