@@ -7,168 +7,7 @@
     <title>M Haseeb Ali - Full Stack Developer</title>
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2103/2103633.png">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" class="stylesheet">
-    <style>
-        /* Course section styling */
-        .course-content {
-            padding: 90px 0;
-            background-color: #202020;
-        }
-        .course-title {
-            margin-bottom: 60px;
-            text-align: center;
-        }
-        .course-title h4 {
-            text-transform: uppercase;
-            font-size: 40px;
-            line-height: 40px;
-            color: #fed700;
-            margin-bottom: 20px;
-        }
-        .course-title p {
-            color: #e5e5e5;
-        }
-        .courses {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-        .course {
-            color: #e5e5e5;
-            border: 2px solid #e5e5e5;
-            border-radius: 10px;
-            width: 100%;
-            position: relative;
-            padding: 25px;
-            text-align: center;
-            flex-basis: 100%;
-            transition: .3s;
-            cursor: pointer;
-        }
-        .course:hover {
-            border-color: #fed700;
-            transform: translateY(-5px);
-        }
-        .course i {
-            background-color: #fed700;
-            width: 60px;
-            height: 60px;
-            color: #333;
-            font-size: 26px;
-            line-height: 60px;
-            border-radius: 50%;
-        }
-        .course h4 {
-            font-size: 26px;
-            text-transform: capitalize;
-            margin: 20px 0;
-            color: #e5e5e5;
-        }
-        .course p {
-            text-align: justify;
-            color: #e5e5e5;
-            margin-bottom: 20px;
-        }
-        
-        /* Contact info styling */
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            max-width: 800px;
-            margin: auto;
-            gap: 15px;
-        }
-        .contact-item {
-            color: #e5e5e5;
-            border: 2px solid #e5e5e5;
-            border-radius: 10px;
-            padding: 15px;
-            text-align: center;
-            flex-basis: 30%;
-            transition: .3s;
-            margin-bottom: 10px;
-            cursor: pointer;
-        }
-        .contact-item:hover {
-            border-color: #fed700;
-            transform: translateY(-5px);
-        }
-        .contact-item i {
-            background-color: #fed700;
-            width: 45px;
-            height: 45px;
-            color: #333;
-            font-size: 20px;
-            line-height: 45px;
-            border-radius: 50%;
-            margin-bottom: 10px;
-        }
-        .contact-item h4 {
-            font-size: 18px;
-            margin-bottom: 8px;
-            color: #e5e5e5;
-        }
-        .contact-item p {
-            color: #e5e5e5;
-            font-size: 15px;
-        }
-        .contact-item button {
-            background-color: #fed700;
-            color: #333;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 30px;
-            margin-top: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: .3s;
-            font-size: 14px;
-        }
-        .contact-item button:hover {
-            transform: scale(1.1);
-        }
-        
-        /* Contact section spacing */
-        .contact-content {
-            padding: 60px 0;
-            background-color: #202020;
-        }
-        .contact-title {
-            margin-bottom: 40px;
-            text-align: center;
-        }
-        .contact-title h4 {
-            text-transform: uppercase;
-            font-size: 40px;
-            line-height: 40px;
-            color: #fed700;
-            margin-bottom: 20px;
-        }
-        .contact-title p {
-            color: #e5e5e5;
-        }
-        
-        /* Project section styling with margin fix */
-        .project-content {
-            padding: 60px 0;
-        }
-        .project {
-            margin-bottom: 20px; /* Added margin to prevent overlap */
-        }
-        
-        /* Responsive fixes */
-        @media only screen and (max-width: 767px) {
-            .course {
-                flex-basis: 100%;
-                margin-bottom: 30px;
-            }
-            .contact-item {
-                flex-basis: 100%;
-                max-width: 280px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head> 
 
 <body>
@@ -397,7 +236,14 @@
     <!-------------------------- JS -------------------------->
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <script>
-        // Function to copy email to clipboard
+        // Hamburger menu toggle
+        $(document).ready(function() {
+            $('.menu_icon').click(function() {
+                $('.navbar').slideToggle(300);
+            });
+        });
+
+        // Copy email to clipboard
         function copyToClipboard(elementId) {
             const text = document.getElementById(elementId).innerText;
             navigator.clipboard.writeText(text).then(function() {
