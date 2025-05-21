@@ -8,32 +8,165 @@
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2103/2103633.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" class="stylesheet">
-    <!-- Inline CSS for button responsiveness in home section -->
     <style>
-        .btn-group {
+        /* Course section styling */
+        .course-content {
+            padding: 90px 0;
+            background-color: #202020;
+        }
+        .course-title {
+            margin-bottom: 60px;
+            text-align: center;
+        }
+        .course-title h4 {
+            text-transform: uppercase;
+            font-size: 40px;
+            line-height: 40px;
+            color: #fed700;
+            margin-bottom: 20px;
+        }
+        .course-title p {
+            color: #e5e5e5;
+        }
+        .courses {
             display: flex;
+            justify-content: space-between;
             flex-wrap: wrap;
-            gap: 10px;
         }
-        @media (max-width: 480px) {
-            .btn-group {
-                flex-direction: column;
-                align-items: center;
-            }
-            .btn-group .btn {
-                width: 100%;
-                max-width: 200px;
-                text-align: center;
-            }
-        }
-        /* Make project divs look clickable */
-        .project {
+        .course {
+            color: #e5e5e5;
+            border: 2px solid #e5e5e5;
+            border-radius: 10px;
+            width: 100%;
+            position: relative;
+            padding: 25px;
+            text-align: center;
+            flex-basis: 100%;
+            transition: .3s;
             cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .project:hover {
+        .course:hover {
+            border-color: #fed700;
             transform: translateY(-5px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .course i {
+            background-color: #fed700;
+            width: 60px;
+            height: 60px;
+            color: #333;
+            font-size: 26px;
+            line-height: 60px;
+            border-radius: 50%;
+        }
+        .course h4 {
+            font-size: 26px;
+            text-transform: capitalize;
+            margin: 20px 0;
+            color: #e5e5e5;
+        }
+        .course p {
+            text-align: justify;
+            color: #e5e5e5;
+            margin-bottom: 20px;
+        }
+        
+        /* Contact info styling */
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: auto;
+            gap: 15px;
+        }
+        .contact-item {
+            color: #e5e5e5;
+            border: 2px solid #e5e5e5;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            flex-basis: 30%;
+            transition: .3s;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        .contact-item:hover {
+            border-color: #fed700;
+            transform: translateY(-5px);
+        }
+        .contact-item i {
+            background-color: #fed700;
+            width: 45px;
+            height: 45px;
+            color: #333;
+            font-size: 20px;
+            line-height: 45px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        .contact-item h4 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: #e5e5e5;
+        }
+        .contact-item p {
+            color: #e5e5e5;
+            font-size: 15px;
+        }
+        .contact-item button {
+            background-color: #fed700;
+            color: #333;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 30px;
+            margin-top: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: .3s;
+            font-size: 14px;
+        }
+        .contact-item button:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Contact section spacing */
+        .contact-content {
+            padding: 60px 0;
+            background-color: #202020;
+        }
+        .contact-title {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .contact-title h4 {
+            text-transform: uppercase;
+            font-size: 40px;
+            line-height: 40px;
+            color: #fed700;
+            margin-bottom: 20px;
+        }
+        .contact-title p {
+            color: #e5e5e5;
+        }
+        
+        /* Project section styling with margin fix */
+        .project-content {
+            padding: 60px 0;
+        }
+        .project {
+            margin-bottom: 20px; /* Added margin to prevent overlap */
+        }
+        
+        /* Responsive fixes */
+        @media only screen and (max-width: 767px) {
+            .course {
+                flex-basis: 100%;
+                margin-bottom: 30px;
+            }
+            .contact-item {
+                flex-basis: 100%;
+                max-width: 280px;
+            }
         }
     </style>
 </head> 
@@ -51,6 +184,7 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#education">Education</a></li>
                     <li><a href="#projects">Projects</a></li>
+                    <li><a href="#courses">Courses</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <div class="menu_icon">
@@ -72,10 +206,9 @@
             <div class="btn-group">
                 <a href="files/HaseebResume.pdf" class="btn">Download CV</a>
                 <a href="#contact" class="btn active">Hire Me</a>
-                <a href="mailto:haseeb.codes.25@gmail.com" class="btn">Contact</a>
             </div>
             <div class="social">
-                <a href="mailto:haseeb.codes.25@gmail.com"><i class="fa fa-envelope"></i></a>
+                <a href="mailto:haseeb.codes.25@gmail.com?subject=Contact%20from%20Portfolio"><i class="fa fa-envelope"></i></a>
                 <a href="https://github.com/HaseebAli3"><i class="fa-brands fa-github"></i></a>
                 <a href="https://www.linkedin.com/in/mhaseebali-pythonlover/"><i class="fa-brands fa-linkedin"></i></a>
             </div>
@@ -117,7 +250,6 @@
                     <div class="row">
                         <div class="timeline-box">
                             <div class="timeline">
-                                <!-- Timeline-item -->
                                 <div class="timeline-item">
                                     <div class="circle-dot"></div>
                                     <h3 class="timeline-title">BSCS - 3.4 CGPA</h3>
@@ -127,7 +259,6 @@
                                         <i class="fa fa-calendar"></i> 2021-2025
                                     </h4>
                                 </div> 
-                                <!-- Timeline-item -->
                                 <div class="timeline-item">
                                     <div class="circle-dot"></div>
                                     <h3 class="timeline-title">ICS - 67%</h3>
@@ -136,7 +267,6 @@
                                         <i class="fa fa-calendar"></i> 2019-2021
                                     </h4>
                                 </div>
-                                <!-- Timeline-item -->
                                 <div class="timeline-item">
                                     <div class="circle-dot"></div>
                                     <h3 class="timeline-title">Matric - 78%</h3>
@@ -154,7 +284,6 @@
                     <div class="row">
                         <div class="timeline-box">
                             <div class="timeline">
-                                <!-- Timeline-item -->
                                 <div class="timeline-item">
                                     <div class="circle-dot"></div>
                                     <h3 class="timeline-title">Full Stack Developer Trainee</h3>
@@ -180,7 +309,6 @@
                 <p>Discover my projects, where creativity meets innovation</p>
             </div>
             <div class="projects">
-                <!-- 1st Project -->
                 <a href="https://github.com/HaseebAli3/Fake-News-Detection-System" target="_blank" class="project">
                     <div>
                         <i class="fa fa-newspaper"></i>
@@ -188,7 +316,6 @@
                         <p>Developed a machine learning-based system to identify fake news articles using natural language processing techniques and classification algorithms.</p>
                     </div>
                 </a>
-                <!-- 2nd Project -->
                 <a href="https://github.com/HaseebAli3/Online-voting-system" target="_blank" class="project">
                     <div>
                         <i class="fa fa-vote-yea"></i>
@@ -196,7 +323,6 @@
                         <p>A secure web-based voting platform built with Django that ensures transparent and tamper-proof elections with user authentication and result tabulation.</p>
                     </div>
                 </a>
-                <!-- 3rd Project -->
                 <a href="https://github.com/HaseebAli3/Selling-Property" target="_blank" class="project">
                     <div>
                         <i class="fa fa-home"></i>
@@ -204,12 +330,30 @@
                         <p>An e-commerce platform for property transactions featuring property listings, search filters, and secure payment integration.</p>
                     </div>
                 </a>
-                <!-- 4th Project -->
                 <a href="https://github.com/HaseebAli3/Student-MS-with-Next.js-Firebase" target="_blank" class="project">
                     <div>
                         <i class="fa fa-users"></i>
                         <h4>Student Management System</h4>
                         <p>A comprehensive school management solution with features for student registration, attendance tracking, grade management, and report generation.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-------------------------- Courses Section -------------------------->
+    <section class="course-content" id="courses">
+        <div class="container">
+            <div class="course-title">
+                <h4>My Courses</h4>
+                <p>Professional development and continuous learning</p>
+            </div>
+            <div class="courses">
+                <a href="https://courses.cognitiveclass.ai/certificates/e6933547848240c68c9c497a4b8c812e" target="_blank" class="course">
+                    <div>
+                        <i class="fa-brands fa-python"></i>
+                        <h4>Python 101 for Data Science</h4>
+                        <p>Comprehensive course covering Python fundamentals, data structures, and essential libraries for data science applications.</p>
                     </div>
                 </a>
             </div>
@@ -223,15 +367,29 @@
                 <h4>Contact Me</h4>
                 <p>Get In Touch</p>
             </div>
-            <div class="contact">
-                <form id="contactForm">
-                    <input type="text" id="name" placeholder="Name" required>
-                    <input type="email" id="email" placeholder="Email" required>
-                    <input type="text" id="subject" placeholder="Subject">
-                    <textarea id="message" placeholder="Message"></textarea>
-                    <button type="submit" class="submit">Send Message</button>
-                </form>
-                <span id="msg"></span>
+            <div class="contact-info">
+                <a href="mailto:haseeb.codes.25@gmail.com?subject=Contact%20from%20Portfolio" class="contact-item">
+                    <div>
+                        <i class="fa fa-envelope"></i>
+                        <h4>Email</h4>
+                        <p id="emailText">haseeb.codes.25@gmail.com</p>
+                        <button onclick="copyToClipboard('emailText'); event.stopPropagation();">Copy</button>
+                    </div>
+                </a>
+                <a href="https://www.linkedin.com/in/mhaseebali-pythonlover/" target="_blank" class="contact-item">
+                    <div>
+                        <i class="fa-brands fa-linkedin"></i>
+                        <h4>LinkedIn</h4>
+                        <p>Connect</p>
+                    </div>
+                </a>
+                <a href="https://wa.me/923414941622" target="_blank" class="contact-item">
+                    <div>
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <h4>WhatsApp</h4>
+                        <p>Chat</p>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
@@ -239,28 +397,15 @@
     <!-------------------------- JS -------------------------->
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <script>
-        // Contact form submission
-        $('#contactForm').submit(function(e) {
-            e.preventDefault();
-            
-            const name = $('#name').val().trim();
-            const email = $('#email').val().trim();
-            const subject = $('#subject').val().trim();
-            const message = $('#message').val().trim();
-
-            if (!name || !email) {
-                $('#msg').text('Please fill in all required fields.');
-                $('#msg').css('color', 'red');
-                return;
-            }
-
-            const mailtoLink = `mailto:haseeb.codes.25@gmail.com?subject=${encodeURIComponent(subject || 'Contact from Portfolio')}&body=${encodeURIComponent(
-                `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
-            )}`;
-            
-            window.location.href = mailtoLink;
-            $('#contactForm')[0].reset();
-        });
+        // Function to copy email to clipboard
+        function copyToClipboard(elementId) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(function() {
+                alert('Email copied to clipboard!');
+            }, function(err) {
+                console.error('Could not copy text: ', err);
+            });
+        }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
