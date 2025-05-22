@@ -22,6 +22,7 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#education">Education</a></li>
+                    <li><a href="#skills">Skills</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#courses">Courses</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -140,6 +141,94 @@
         </div>
     </section>
 
+    <!-------------------------- Skills Section -------------------------->
+    <section class="skills-content" id="skills">
+        <div class="container">
+            <div class="skills-title">
+                <h4>Skills</h4>
+                <p>Technical expertise and tools</p>
+            </div>
+            <div class="skills">
+                <div class="skill-group">
+                    <h3>Languages</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fa-brands fa-python"></i>
+                            <h4>Python</h4>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fa-brands fa-js"></i>
+                            <h4>JavaScript</h4>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fa-solid fa-code"></i>
+                            <h4>C++</h4>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fa-brands fa-html5"></i>
+                            <h4>HTML</h4>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fa-brands fa-css3-alt"></i>
+                            <h4>CSS</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h3>Frameworks</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/django.svg" alt="Django">
+    <h4>Django</h4>
+</div>
+                        <div class="skill-item">
+                            <i class="fa-brands fa-bootstrap"></i>
+                            <h4>Bootstrap</h4>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/nextdotjs.svg" alt="Next.js">
+                            <h4>Next.js <span>(Learning)</span></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h3>Databases</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fa-solid fa-database"></i>
+                            <h4>SQLite</h4>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/postgresql.svg" alt="PostgreSQL">
+                            <h4>PostgreSQL</h4>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/firebase.svg" alt="Firebase">
+                            <h4>Firebase</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h3>Software</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fa-solid fa-code"></i>
+                            <h4>VS Code</h4>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fa-solid fa-laptop-code"></i>
+                            <h4>Dev C++</h4>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fa-solid fa-file-word"></i>
+                            <h4>MS Word</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-------------------------- Projects -------------------------->
     <section class="project-content" id="projects">
         <div class="container">
@@ -235,12 +324,26 @@
         
     <!-------------------------- JS -------------------------->
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-    <script>
+<script>
+    $(document).ready(function() {
         // Hamburger menu toggle
-        $(document).ready(function() {
-            $('.menu_icon').click(function() {
-                $('.navbar').slideToggle(300);
-            });
+        $('.menu_icon').click(function() {
+            $('.navbar').slideToggle(300);
+            $('.menu_icon i').toggleClass('fa-bars fa-times');
+        });
+
+        // Smooth scrolling for navigation links
+        $('.navbar a').on('click', function(event) {
+            if (this.hash !== '') {
+                event.preventDefault();
+                const hash = this.hash;
+                $('html, body').animate({ scrollTop: $(hash).offset().top }, 800, function() { window.location.hash = hash; });
+                // Close mobile menu after clicking a link (mobile only)
+                if ($(window).width() <= 767) {
+                    $('.navbar').slideUp(300);
+                    $('.menu_icon i').removeClass('fa-times').addClass('fa-bars');
+                }
+            }
         });
 
         // Copy email to clipboard
@@ -252,7 +355,8 @@
                 console.error('Could not copy text: ', err);
             });
         }
-    </script>
+    });
+</script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="script.js"></script>
