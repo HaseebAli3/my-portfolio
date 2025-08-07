@@ -6,61 +6,707 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>M Haseeb Ali - Full Stack Developer</title>
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2103/2103633.png">
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head> 
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Side Navigation */
+        .sidenav {
+            height: 100vh;
+            width: 80px;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+            overflow: hidden;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+
+        .sidenav:hover {
+            width: 250px;
+        }
+
+        .sidenav .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .sidenav .nav-item:hover {
+            background: rgba(255,255,255,0.1);
+            padding-left: 30px;
+        }
+
+        .sidenav .nav-item i {
+            font-size: 20px;
+            width: 40px;
+            text-align: center;
+        }
+
+        .sidenav .nav-item span {
+            margin-left: 15px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .sidenav:hover .nav-item span {
+            opacity: 1;
+        }
+
+        .sidenav .logo {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid rgba(255,255,255,0.2);
+            margin-bottom: 10px;
+        }
+
+        .sidenav .logo i {
+            font-size: 30px;
+            color: white;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 80px;
+            transition: margin-left 0.3s ease;
+        }
+
+        /* Header */
+        .header-area {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 80px;
+            z-index: 999;
+            padding: 15px 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: left 0.3s ease;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.5rem;
+        }
+
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #667eea;
+            cursor: pointer;
+        }
+
+        /* Home Section */
+        .FirstElement {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            padding: 100px 50px 50px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .FirstElement::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.1)" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
+        }
+
+        .home-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-photo {
+            text-align: center;
+        }
+
+        .profile-photo img {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255,255,255,0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .profile-text h5 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .profile-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .profile-text p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255,255,255,0.3);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn.active {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h4 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        /* About Section */
+        .about-area {
+            background: #f8f9fa;
+        }
+
+        .about {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .about-content h4 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .about-content ul {
+            list-style: none;
+        }
+
+        .about-content li {
+            margin-bottom: 20px;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.8;
+        }
+
+        .about-content li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+        }
+
+        .about-skills {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .about-skills ul {
+            list-style: none;
+        }
+
+        .about-skills li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Education & Experience */
+        .education-content {
+            background: white;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .circle-dot {
+            position: absolute;
+            left: -37px;
+            top: 20px;
+            width: 15px;
+            height: 15px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+
+        /* Skills Section */
+        .skills-content {
+            background: #f8f9fa;
+        }
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-group {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .skill-group h3 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 1.3rem;
+        }
+
+        .skill-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-item {
+            padding: 15px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .skill-item i, .skill-item img {
+            font-size: 30px;
+            margin-bottom: 10px;
+            width: 30px;
+            height: 30px;
+        }
+
+        .skill-item h4 {
+            font-size: 0.9rem;
+        }
+
+        /* Projects Section */
+        .project-content {
+            background: white;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-decoration: none;
+            color: #333;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .project:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+
+        .project i {
+            font-size: 3rem;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .project h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .project p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .project-links {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .project-link {
+            padding: 8px 15px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            background: #f8f9fa;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .contact-item {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-decoration: none;
+            color: #333;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .contact-item i {
+            font-size: 3rem;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .contact-item h4 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .contact-item button {
+            margin-top: 10px;
+            padding: 5px 15px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-left: 80px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .sidenav {
+                width: 0;
+                z-index: 1001;
+            }
+
+            .sidenav.active {
+                width: 250px;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .header-area {
+                left: 0;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .FirstElement {
+                padding: 100px 20px 50px;
+            }
+
+            .home-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .profile-photo img {
+                width: 250px;
+                height: 250px;
+            }
+
+            .profile-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .section {
+                padding: 50px 20px;
+            }
+
+            .about, .row {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer {
+                margin-left: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-text h1 {
+                font-size: 2rem;
+            }
+
+            .section-title h4 {
+                font-size: 2rem;
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
 
 <body>
-    <!-------------------------- Header Area -------------------------->
-    <header class="header-area">
-        <div class="container">
-            <div class="header">
-                <a href="" class="logo">
-                    <i class="fa fa-code"></i>
-                </a>
-                <ul class="navbar">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#courses">Courses</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <div class="menu_icon">
-                    <i class="fa fa-bars"></i>
-                </div>
-            </div>
-        </div> 
-    </header>
- 
-    <!-------------------------- Home Page -------------------------->
-    <div class="FirstElement" id="home">
-        <div class="profile-photo">
-            <img src="https://img.freepik.com/premium-vector/vector-man-with-laptop-minimalism-white-background-generative-ai_384720-9617.jpg?ga=GA1.1.2114219623.1747738040&semt=ais_hybrid&w=740" alt="profile picture">
+    <!-- Side Navigation -->
+    <div class="sidenav" id="sidenav">
+        <div class="logo">
+            <i class="fa fa-code"></i>
         </div>
-        <div class="profile-text">
-            <h5>Hi I'm </h5><br>
-            <h1>M Haseeb Ali</h1><br>
-            <p>Welcome to my portfolio website! I'm a passionate Full Stack Developer specializing in Django, HTML, CSS, and JavaScript. Currently enhancing my skills as a trainee at Torch Solutions software house, I'm eager to contribute to innovative web solutions and grow in this dynamic field.</p>
-            <div class="btn-group">
-                <a href="files/HaseebResume.pdf" class="btn">Download CV</a>
-                <a href="#contact" class="btn active">Hire Me</a>
-            </div>
-            <div class="social">
-                <a href="mailto:haseeb.codes.25@gmail.com?subject=Contact%20from%20Portfolio"><i class="fa fa-envelope"></i></a>
-                <a href="https://github.com/HaseebAli3"><i class="fa-brands fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/mhaseebali-pythonlover/"><i class="fa-brands fa-linkedin"></i></a>
-            </div>
-        </div>
+        <a href="#home" class="nav-item">
+            <i class="fa fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="#about" class="nav-item">
+            <i class="fa fa-user"></i>
+            <span>About</span>
+        </a>
+        <a href="#education" class="nav-item">
+            <i class="fa fa-graduation-cap"></i>
+            <span>Education</span>
+        </a>
+        <a href="#skills" class="nav-item">
+            <i class="fa fa-cogs"></i>
+            <span>Skills</span>
+        </a>
+        <a href="#projects" class="nav-item">
+            <i class="fa fa-folder"></i>
+            <span>Projects</span>
+        </a>
+        <a href="#courses" class="nav-item">
+            <i class="fa fa-certificate"></i>
+            <span>Courses</span>
+        </a>
+        <a href="#contact" class="nav-item">
+            <i class="fa fa-envelope"></i>
+            <span>Contact</span>
+        </a>
     </div>
 
-    <!-------------------------- About Section -------------------------->
-    <section class="about-area" id="about">
-        <div class="container">
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <header class="header-area">
+            <div class="header">
+                <h1>M Haseeb Ali</h1>
+                <button class="mobile-menu" onclick="toggleNav()">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Home Section -->
+        <div class="FirstElement" id="home">
+            <div class="home-container">
+                <div class="profile-photo">
+                    <img src="https://img.freepik.com/premium-vector/vector-man-with-laptop-minimalism-white-background-generative-ai_384720-9617.jpg?ga=GA1.1.2114219623.1747738040&semt=ais_hybrid&w=740" alt="profile picture">
+                </div>
+                <div class="profile-text">
+                    <h5>Hi I'm</h5>
+                    <h1>M Haseeb Ali</h1>
+                    <p>Welcome to my portfolio website! I'm a passionate Full Stack Developer specializing in Django, HTML, CSS, and JavaScript. Currently enhancing my skills as a trainee at Torch Solutions software house, I'm eager to contribute to innovative web solutions and grow in this dynamic field.</p>
+                    <div class="btn-group">
+                        <a href="files/HaseebResume.pdf" class="btn">Download CV</a>
+                        <a href="#contact" class="btn active">Hire Me</a>
+                    </div>
+                    <div class="social">
+                        <a href="mailto:haseeb.codes.25@gmail.com?subject=Contact%20from%20Portfolio"><i class="fa fa-envelope"></i></a>
+                        <a href="https://github.com/HaseebAli3"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/mhaseebali-pythonlover/"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <section class="about-area section" id="about">
+            <div class="section-title">
+                <h4>About Me</h4>
+                <p>Get to know me better</p>
+            </div>
             <div class="about">
                 <div class="about-content">
-                    <h4>About Me</h4>
                     <ul>
                         <li>I am a fresh graduate with a Bachelor's degree in Computer Science, equipped with full-stack development skills in Django, HTML, CSS, and JavaScript. My journey in technology is driven by a passion for creating efficient and user-friendly web applications.</li>
                         <li>Currently, I'm gaining practical experience as a trainee at Torch Solutions software house, where I'm applying my academic knowledge to real-world projects and continuously expanding my technical expertise.</li>
@@ -69,82 +715,74 @@
                 </div>
                 <div class="about-skills">
                     <ul>
-                        <li>Name: M Haseeb Ali</li>
-                        <li>Age: 23</li>     
-                        <li>From: Pakistan</li>
-                        <li>Email: haseeb.codes.25@gmail.com</li>
-                        <li>Availability: Fulltime</li>
-                        <li>Experience: Trainee</li>
+                        <li><strong>Name:</strong> M Haseeb Ali</li>
+                        <li><strong>Age:</strong> 23</li>     
+                        <li><strong>From:</strong> Pakistan</li>
+                        <li><strong>Email:</strong> haseeb.codes.25@gmail.com</li>
+                        <li><strong>Availability:</strong> Fulltime</li>
+                        <li><strong>Experience:</strong> Trainee</li>
                     </ul>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-------------- Education & Internship -------------->
-    <section class="education-content" id="education">
-        <div class="container">
+        <!-- Education & Experience -->
+        <section class="education-content section" id="education">
+            <div class="section-title">
+                <h4>Education & Experience</h4>
+                <p>My academic and professional journey</p>
+            </div>
             <div class="row">
                 <div class="education">
                     <h3 class="title">Education</h3>
-                    <div class="row">
-                        <div class="timeline-box">
-                            <div class="timeline">
-                                <div class="timeline-item">
-                                    <div class="circle-dot"></div>
-                                    <h3 class="timeline-title">BSCS - 3.4 CGPA</h3>
-                                    <h4 class="timeline-title">Government Graduate College Khanpur</h4>
-                                    <h4 class="timeline-title">(Affiliated with Khawaja Fareed University)</h4>
-                                    <h4 class="timeline-title">
-                                        <i class="fa fa-calendar"></i> 2021-2025
-                                    </h4>
-                                </div> 
-                                <div class="timeline-item">
-                                    <div class="circle-dot"></div>
-                                    <h3 class="timeline-title">ICS - 67%</h3>
-                                    <h4 class="timeline-title">Government Higher Secondary School Firoza</h4>
-                                    <h4 class="timeline-title">
-                                        <i class="fa fa-calendar"></i> 2019-2021
-                                    </h4>
-                                </div>
-                                <div class="timeline-item">
-                                    <div class="circle-dot"></div>
-                                    <h3 class="timeline-title">Matric - 78%</h3>
-                                    <h4 class="timeline-title">Government Higher Secondary School Firoza</h4>
-                                    <h4 class="timeline-title">
-                                        <i class="fa fa-calendar"></i> 2017-2019
-                                    </h4>
-                                </div>
-                            </div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="circle-dot"></div>
+                            <h3 class="timeline-title">BSCS - 3.4 CGPA</h3>
+                            <h4 class="timeline-title">Government Graduate College Khanpur</h4>
+                            <h4 class="timeline-title">(Affiliated with Khawaja Fareed University)</h4>
+                            <h4 class="timeline-title">
+                                <i class="fa fa-calendar"></i> 2021-2025
+                            </h4>
+                        </div> 
+                        <div class="timeline-item">
+                            <div class="circle-dot"></div>
+                            <h3 class="timeline-title">ICS - 67%</h3>
+                            <h4 class="timeline-title">Government Higher Secondary School Firoza</h4>
+                            <h4 class="timeline-title">
+                                <i class="fa fa-calendar"></i> 2019-2021
+                            </h4>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="circle-dot"></div>
+                            <h3 class="timeline-title">Matric - 78%</h3>
+                            <h4 class="timeline-title">Government Higher Secondary School Firoza</h4>
+                            <h4 class="timeline-title">
+                                <i class="fa fa-calendar"></i> 2017-2019
+                            </h4>
                         </div>
                     </div>
                 </div>
                 <div class="internship">
                     <h3 class="title">Experience</h3>
-                    <div class="row">
-                        <div class="timeline-box">
-                            <div class="timeline">
-                                <div class="timeline-item">
-                                    <div class="circle-dot"></div>
-                                    <h3 class="timeline-title">Full Stack Developer Trainee</h3>
-                                    <h4 class="timeline-title">Torch Solutions</h4>
-                                    <h4 class="timeline-title">
-                                        <i class="fa fa-calendar"></i> CURRENT
-                                    </h4>
-                                    <li class="timeline-text">Gaining hands-on experience in full-stack development with Django framework. Working on real-world projects to enhance skills in backend development, frontend design, and database management.</li>
-                                </div> 
-                            </div>
-                        </div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="circle-dot"></div>
+                            <h3 class="timeline-title">Full Stack Developer Trainee</h3>
+                            <h4 class="timeline-title">Torch Solutions</h4>
+                            <h4 class="timeline-title">
+                                <i class="fa fa-calendar"></i> CURRENT
+                            </h4>
+                            <p class="timeline-text">Gaining hands-on experience in full-stack development with Django framework. Working on real-world projects to enhance skills in backend development, frontend design, and database management.</p>
+                        </div> 
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-------------------------- Skills Section -------------------------->
-    <section class="skills-content" id="skills">
-        <div class="container">
-            <div class="skills-title">
+        <!-- Skills Section -->
+        <section class="skills-content section" id="skills">
+            <div class="section-title">
                 <h4>Skills</h4>
                 <p>Technical expertise and tools</p>
             </div>
@@ -178,16 +816,16 @@
                     <h3>Frameworks</h3>
                     <div class="skill-items">
                         <div class="skill-item">
-    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/django.svg" alt="Django">
-    <h4>Django</h4>
-</div>
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/django.svg" alt="Django">
+                            <h4>Django</h4>
+                        </div>
                         <div class="skill-item">
                             <i class="fa-brands fa-bootstrap"></i>
                             <h4>Bootstrap</h4>
                         </div>
                         <div class="skill-item">
                             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/nextdotjs.svg" alt="Next.js">
-                            <h4>Next.js <span>(Learning)</span></h4>
+                            <h4>Next.js</h4>
                         </div>
                     </div>
                 </div>
@@ -226,124 +864,138 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-------------------------- Projects -------------------------->
-    <section class="project-content" id="projects">
-        <div class="container">
-            <div class="project-title">
+        <!-- Projects Section -->
+        <section class="project-content section" id="projects">
+            <div class="section-title">
                 <h4>My Projects</h4>
                 <p>Discover my projects, where creativity meets innovation</p>
             </div>
             <div class="projects">
-                <a href="https://github.com/HaseebAli3/Fake-News-Detection-System" target="_blank" class="project">
-                    <div>
-                        <i class="fa fa-newspaper"></i>
-                        <h4>Fake News Detection System</h4>
-                        <p>Developed a machine learning-based system to identify fake news articles using natural language processing techniques and classification algorithms.</p>
+                <div class="project">
+                    <i class="fa fa-newspaper"></i>
+                    <h4>Fake News Detection System</h4>
+                    <p>Developed a machine learning-based system to identify fake news articles using natural language processing techniques and classification algorithms.</p>
+                    <div class="project-links">
+                        <a href="https://fakenews.pythonanywhere.com/" target="_blank" class="project-link">Live Demo</a>
+                        <a href="https://github.com/HaseebAli3/Fake-News-Detection-System" target="_blank" class="project-link">GitHub</a>
                     </div>
-                </a>
-                <a href="https://github.com/HaseebAli3/Online-voting-system" target="_blank" class="project">
-                    <div>
-                        <i class="fa fa-vote-yea"></i>
-                        <h4>Online Voting System</h4>
-                        <p>A secure web-based voting platform built with Django that ensures transparent and tamper-proof elections with user authentication and result tabulation.</p>
+                </div>
+                
+                <div class="project">
+                    <i class="fa fa-blog"></i>
+                    <h4>Jatt Clans - Blogging Website</h4>
+                    <p>A comprehensive blogging platform built with Django backend and Next.js frontend, featuring user authentication, article management, and responsive design.</p>
+                    <div class="project-links">
+                        <a href="https://jattclans.vercel.app/articles" target="_blank" class="project-link">Live Demo</a>
+                        <a href="https://github.com/HaseebAli3" target="_blank" class="project-link">GitHub</a>
                     </div>
-                </a>
-                <a href="https://github.com/HaseebAli3/Selling-Property" target="_blank" class="project">
-                    <div>
-                        <i class="fa fa-home"></i>
-                        <h4>Online Property Sale</h4>
-                        <p>An e-commerce platform for property transactions featuring property listings, search filters, and secure payment integration.</p>
-                    </div>
-                </a>
-                <a href="https://github.com/HaseebAli3/Student-MS-with-Next.js-Firebase" target="_blank" class="project">
-                    <div>
-                        <i class="fa fa-users"></i>
-                        <h4>Student Management System</h4>
-                        <p>A comprehensive school management solution with features for student registration, attendance tracking, grade management, and report generation.</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
+                </div>
 
-    <!-------------------------- Courses Section -------------------------->
-    <section class="course-content" id="courses">
-        <div class="container">
-            <div class="course-title">
+                <div class="project">
+                    <i class="fa fa-vote-yea"></i>
+                    <h4>Online Voting System</h4>
+                    <p>A secure web-based voting platform built with Django that ensures transparent and tamper-proof elections with user authentication and result tabulation.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/HaseebAli3/Online-voting-system" target="_blank" class="project-link">GitHub</a>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <i class="fa fa-home"></i>
+                    <h4>Online Property Sale</h4>
+                    <p>An e-commerce platform for property transactions featuring property listings, search filters, and secure payment integration.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/HaseebAli3/Selling-Property" target="_blank" class="project-link">GitHub</a>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <i class="fa fa-users"></i>
+                    <h4>Student Management System</h4>
+                    <p>A comprehensive school management solution with features for student registration, attendance tracking, grade management, and report generation.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/HaseebAli3/Student-MS-with-Next.js-Firebase" target="_blank" class="project-link">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Courses Section -->
+        <section class="course-content section" id="courses">
+            <div class="section-title">
                 <h4>My Courses</h4>
                 <p>Professional development and continuous learning</p>
             </div>
-            <div class="courses">
-                <a href="https://courses.cognitiveclass.ai/certificates/e6933547848240c68c9c497a4b8c812e" target="_blank" class="course">
-                    <div>
-                        <i class="fa-brands fa-python"></i>
-                        <h4>Python 101 for Data Science</h4>
-                        <p>Comprehensive course covering Python fundamentals, data structures, and essential libraries for data science applications.</p>
-                    </div>
+            <div class="projects">
+                <a href="https://courses.cognitiveclass.ai/certificates/e6933547848240c68c9c497a4b8c812e" target="_blank" class="project">
+                    <i class="fa-brands fa-python"></i>
+                    <h4>Python 101 for Data Science</h4>
+                    <p>Comprehensive course covering Python fundamentals, data structures, and essential libraries for data science applications.</p>
                 </a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-------------------------- Contact Me -------------------------->
-    <section class="contact-content" id="contact">
-        <div class="container">
-            <div class="contact-title">
+        <!-- Contact Section -->
+        <section class="contact-content section" id="contact">
+            <div class="section-title">
                 <h4>Contact Me</h4>
                 <p>Get In Touch</p>
             </div>
             <div class="contact-info">
                 <a href="mailto:haseeb.codes.25@gmail.com?subject=Contact%20from%20Portfolio" class="contact-item">
-                    <div>
-                        <i class="fa fa-envelope"></i>
-                        <h4>Email</h4>
-                        <p id="emailText">haseeb.codes.25@gmail.com</p>
-                        <button onclick="copyToClipboard('emailText'); event.stopPropagation();">Copy</button>
-                    </div>
+                    <i class="fa fa-envelope"></i>
+                    <h4>Email</h4>
+                    <p id="emailText">haseeb.codes.25@gmail.com</p>
+                    <button onclick="copyToClipboard('emailText'); event.stopPropagation();">Copy</button>
                 </a>
                 <a href="https://www.linkedin.com/in/mhaseebali-pythonlover/" target="_blank" class="contact-item">
-                    <div>
-                        <i class="fa-brands fa-linkedin"></i>
-                        <h4>LinkedIn</h4>
-                        <p>Connect</p>
-                    </div>
+                    <i class="fa-brands fa-linkedin"></i>
+                    <h4>LinkedIn</h4>
+                    <p>Connect with me</p>
                 </a>
                 <a href="https://wa.me/923414941622" target="_blank" class="contact-item">
-                    <div>
-                        <i class="fa-brands fa-whatsapp"></i>
-                        <h4>WhatsApp</h4>
-                        <p>Chat</p>
-                    </div>
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <h4>WhatsApp</h4>
+                    <p>Let's chat</p>
                 </a>
             </div>
-        </div>
-    </section>
-        
-    <!-------------------------- JS -------------------------->
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-<script>
-    $(document).ready(function() {
-        // Hamburger menu toggle
-        $('.menu_icon').click(function() {
-            $('.navbar').slideToggle(300);
-            $('.menu_icon i').toggleClass('fa-bars fa-times');
-        });
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <small class="message">Thanks for visiting and happy coding!</small>
+            <small class="copyright">© Copyright 2025. All rights reserved.</small>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script>
+        // Toggle side navigation for mobile
+        function toggleNav() {
+            const sidenav = document.getElementById('sidenav');
+            sidenav.classList.toggle('active');
+        }
 
         // Smooth scrolling for navigation links
-        $('.navbar a').on('click', function(event) {
-            if (this.hash !== '') {
-                event.preventDefault();
-                const hash = this.hash;
-                $('html, body').animate({ scrollTop: $(hash).offset().top }, 800, function() { window.location.hash = hash; });
-                // Close mobile menu after clicking a link (mobile only)
-                if ($(window).width() <= 767) {
-                    $('.navbar').slideUp(300);
-                    $('.menu_icon i').removeClass('fa-times').addClass('fa-bars');
+        document.querySelectorAll('.nav-item').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
-            }
+                
+                // Close mobile menu after clicking
+                if (window.innerWidth <= 768) {
+                    document.getElementById('sidenav').classList.remove('active');
+                }
+            });
         });
 
         // Copy email to clipboard
@@ -355,16 +1007,16 @@
                 console.error('Could not copy text: ', err);
             });
         }
-    });
-</script>
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="script.js"></script>
-    
-    <!-------------------------- Footer section -------------------------->
-    <footer class="footer">
-        <small class="message">Thanks for visiting and happy coding!</small>
-        <small class="copyright">© Copyright 2025. All rights reserved.</small>
-    </footer>
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const sidenav = document.getElementById('sidenav');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            
+            if (!sidenav.contains(e.target) && !mobileMenu.contains(e.target)) {
+                sidenav.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
